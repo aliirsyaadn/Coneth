@@ -1,0 +1,10 @@
+Joystick
+Touchscreen
+GPIO
+Tablets
+Gameport support
+Multimedia support
+Sound card support
+
+atau menggunakan
+make localmodconfig
