@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coneth</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      
+      rel="stylesheet"
+    />
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+ 
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+            <img id="coneth-logo" src="{% static 'img/coneth-logo.png' %}" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link" href="#">Rename</a>
+            <a class="nav-item nav-link" href="#">Version</a>
+            <a class="nav-item nav-link" href="#">List</a>
+            <a class="nav-item nav-link" href="#">Set Device</a>
+            <a class="nav-item nav-link" href="#">Info Device</a>
+            <a class="nav-item nav-link" href="#">Infonet Device</a>
+            <a class="nav-item nav-link" href="#">Down</a>
+            <a class="nav-item nav-link" href="#">Up</a>
+            <a class="nav-item nav-link" href="#">Speed</a>
+
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+                <img src="{% static 'img/bug_fixed.svg' %}" id="main-img" alt="">
+            </div>
+
+            <div class="col-sm-6" id="main-desc-div">
+                <h1 class="main-desc">Hello we are Coneth. In here we allow you to modify your personal ethernet configuration in just a matter of button click. Scroll bellow for more detail about the command that you can use</h1>
+            </div>
+          </div>
+
+          <br><br><br>
+              
+
+            
+            <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="cards-action">
+
+                            <div class="card-action color1">
+                                <img class="logo-action" src="{% static 'img/rename.svg' %}" alt="">
+                                <br>
+                                <h4 class="title-action">Coneth rename</h4>
+                                <p class="desc-action">Rename the device name temporary</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                            
+                            <div class="card-action color2">
+                                <img class="logo-action" src="{% static 'img/version.svg' %}" alt="">
+                                <br>
+                                <h4 class="title-action">Coneth version</h4>
+                                <p class="desc-action">Display current version</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                            
+                            <div class="card-action color3">
+                                <img class="logo-action" src="{% static 'img/list.svg' %}" alt="">
+                                <h4 class="title-action">Coneth list</h4>
+                                <p class="desc-action">Display list all network and device driver</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                        </div>
+                    </div>
+      
+      
+                    <div class="carousel-item">
+                        <div class="cards-action">
+
+                            <div class="card-action color4">
+                                <img class="logo-action" src="{% static 'img/set_device.svg' %}" alt="">
+                                <br>
+                                <h4 class="title-action">Coneth Set Device</h4>
+                                <p class="desc-action">Display help information usage</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                            
+                            <div class="card-action color5">
+                                <img class="logo-action" src="{% static 'img/info.svg' %}" alt="">
+                                <br>
+                                <h4 class="title-action">Coneth info device</h4>
+                                <p class="desc-action">Display settings information for the specific device network</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                            
+                            <div class="card-action color2">
+                                <img class="logo-action" src="{% static 'img/infonet.svg' %}" alt="">
+                                <h4 class="title-action">Coneth infonet device</h4>
+                                <p class="desc-action">Display network information for the specific device network</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="cards-action">
+
+                            <div class="card-action color1">
+                                <img class="logo-action" src="{% static 'img/down.svg' %}" alt="">
+                                <br>
+                                <h4 class="title-action">Coneth down device</h4>
+                                <p class="desc-action">Down or stop running for the device network</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                            
+                            <div class="card-action color4">
+                                <img class="logo-action" src="{% static 'img/up.svg' %}" alt="">
+                                <br>
+                                <h4 class="title-action">Coneth up device</h4>
+                                <p class="desc-action">Up or start running for the device network</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                            
+                            <div class="card-action color2">
+                                <img class="logo-action" src="{% static 'img/speed.svg' %}" alt="">
+                                <h4 class="title-action">Coneth speed</h4>
+                                <p class="desc-action">Display internet speed</p>
+                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                            </div>
+                        </div>
+                    </div>
+      
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              <br><br><br><br><br><br>
+              
+            </div>
+            
+            
+            
+
+            <div class="div-coneth-rename">
+                <div class="row">
+                    <div class="col-sm-6">
+                      <h1 class="coneth-headers main-desc">Coneth Rename</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="current-name" class="input-rename" id="" placeholder="Enter your current device name">
+                        <br><br>
+                        <input type="text" name="new-name" class="input-rename" id="" placeholder="Enter your new device name">
+                        <br><br>
+                        <button type="button" class="btn btn-success">Rename Device</button>
+                        <span id="rename-success">Rename was successful!</span>
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </div>
+
+                          <div class="spinner-border"></div>
+                          
+                    {% comment %} <img class="coneth-rename-bg" src="{% static 'img/Aare.svg' %}" alt=""> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+
+            <div class="div-coneth-version">
+                <div class="row">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth Version</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+
+            <div class="div-coneth-list">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth List</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+
+            <div class="div-coneth-version">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <select class="form-control select-set-device" name="speed" id="">
+                            <option value="" disabled selected>Speed</option>
+                            <option value="10">10</option>
+                            <option value="100">100</option>
+                            <option value="1000">1000</option>
+                        </select>
+                        <br>
+                        <select class="form-control select-set-device" name="duplex" id="">
+                            <option value="" disabled selected>Duplex</option>
+                            <option value="half">Half</option>
+                            <option value="full">Full</option>
+                        </select>
+                        <br>
+                        <select class="form-control select-set-device" name="autoneg" id="">
+                            <option value="" disabled selected>Auto Negotiation</option>
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth Set Device</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+
+
+            <div class="div-coneth-list">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth Info Device</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+            </div>
+            
+
+            <br><br><br><br><br><br>
+
+            <div class="div-coneth-version">
+                <div class="row">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth Infonet Device</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+
+            <div class="div-coneth-list">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth Down</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+            </div>
+            
+
+            <br><br><br><br><br><br>
+
+            <div class="div-coneth-version">
+                <div class="row">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth Up</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+
+            <div class="div-coneth-list">
+                <div class="row">
+                    <div class="col-sm-6" id="speed-div">
+                        <!-- <img src="{% static 'img/speed_img.svg' %}" alt=""> -->
+                        <h1 class="coneth-headers main-desc">Coneth Speed</h1>
+                        <button type="button" class="btn btn-success button-go">Go</button>
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+            </div>
+            
+
+            <br><br><br><br><br><br>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    $('.spinner-grow').show();
+</script>
+</body>
+</html>
