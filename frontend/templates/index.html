@@ -21,7 +21,7 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" id="mainNav">
         <a class="navbar-brand" href="#">
             <img id="coneth-logo" src="{% static 'img/coneth-logo.png' %}" alt="">
         </a>
@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link" href="#features">Features</a>
             <a class="nav-item nav-link" href="#">Rename</a>
             <a class="nav-item nav-link" href="#">Version</a>
             <a class="nav-item nav-link" href="#">List</a>
@@ -60,7 +60,7 @@
           <br><br><br>
               
 
-            
+            <section id="feature">
             <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -127,7 +127,6 @@
                     
                     <div class="carousel-item">
                         <div class="cards-action">
-
                             <div class="card-action color1">
                                 <img class="logo-action" src="{% static 'img/down.svg' %}" alt="">
                                 <br>
@@ -165,6 +164,7 @@
               <br><br><br><br><br><br>
               
             </div>
+        </section>
             
             
             
@@ -175,19 +175,15 @@
                       <h1 class="coneth-headers main-desc">Coneth Rename</h1>
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" name="current-name" class="input-rename" id="" placeholder="Enter your current device name">
-                        <br><br>
-                        <input type="text" name="new-name" class="input-rename" id="" placeholder="Enter your new device name">
-                        <br><br>
-                        <button type="button" class="btn btn-success">Rename Device</button>
-                        <span id="rename-success">Rename was successful!</span>
-                        <div class="spinner-grow text-success" role="status">
-                            <span class="sr-only">Loading...</span>
-                          </div>
-
-                          <div class="spinner-border"></div>
-                          
-                    {% comment %} <img class="coneth-rename-bg" src="{% static 'img/Aare.svg' %}" alt=""> {% endcomment %}
+                        <form action="{% url 'rename' %}" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="current-name" class="input-rename" id="" placeholder="Enter your current device name">
+                            <br><br>
+                            <input type="text" name="new-name" class="input-rename" id="" placeholder="Enter your new device name">
+                            <br><br>
+                            <button type="submit" class="btn btn-success">Rename Device</button>
+                            <span id="rename-success">Rename was successful!</span>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -199,8 +195,11 @@
                     <div class="col-sm-6">
                     </div>
                     <div class="col-sm-6">
-                        <h1 class="coneth-headers main-desc">Coneth Version</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
+                        <form action="{% url 'version' %}" method="post">
+                            {% csrf_token %}
+                            <h1 class="coneth-headers main-desc">Coneth Version</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -210,8 +209,11 @@
             <div class="div-coneth-list">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h1 class="coneth-headers main-desc">Coneth List</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
+                        <form action="{% url 'list_device' %}" method="post">
+                            {% csrf_token %}
+                            <h1 class="coneth-headers main-desc">Coneth List</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </form>
                     </div>
                     <div class="col-sm-6">
                     </div>
@@ -223,29 +225,32 @@
             <div class="div-coneth-version">
                 <div class="row">
                     <div class="col-sm-6">
-                        <select class="form-control select-set-device" name="speed" id="">
-                            <option value="" disabled selected>Speed</option>
-                            <option value="10">10</option>
-                            <option value="100">100</option>
-                            <option value="1000">1000</option>
-                        </select>
-                        <br>
-                        <select class="form-control select-set-device" name="duplex" id="">
-                            <option value="" disabled selected>Duplex</option>
-                            <option value="half">Half</option>
-                            <option value="full">Full</option>
-                        </select>
-                        <br>
-                        <select class="form-control select-set-device" name="autoneg" id="">
-                            <option value="" disabled selected>Auto Negotiation</option>
-                            <option value="on">On</option>
-                            <option value="off">Off</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-6">
-                        <h1 class="coneth-headers main-desc">Coneth Set Device</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
-                    </div>
+                        <form action="{% url 'set_device' %}" method="post">
+                            {% csrf_token %}
+                            <select class="form-control select-set-device" name="speed" id="">
+                                <option value="" disabled selected>Speed</option>
+                                <option value="10">10</option>
+                                <option value="100">100</option>
+                                <option value="1000">1000</option>
+                            </select>
+                            <br>
+                            <select class="form-control select-set-device" name="duplex" id="">
+                                <option value="" disabled selected>Duplex</option>
+                                <option value="half">Half</option>
+                                <option value="full">Full</option>
+                            </select>
+                            <br>
+                            <select class="form-control select-set-device" name="autoneg" id="">
+                                <option value="" disabled selected>Auto Negotiation</option>
+                                <option value="on">On</option>
+                                <option value="off">Off</option>
+                            </select>
+                        </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <h1 class="coneth-headers main-desc">Coneth Set Device</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </div>
                 </div>
             </div>
 
@@ -255,8 +260,11 @@
             <div class="div-coneth-list">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h1 class="coneth-headers main-desc">Coneth Info Device</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
+                        <form action="{% url 'info' %}" method="post">
+                            {% csrf_token %}
+                            <h1 class="coneth-headers main-desc">Coneth Info Device</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </form>
                     </div>
                     <div class="col-sm-6">
                     </div>
@@ -271,8 +279,11 @@
                     <div class="col-sm-6">
                     </div>
                     <div class="col-sm-6">
-                        <h1 class="coneth-headers main-desc">Coneth Infonet Device</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
+                        <form action="{% url 'infonet' %}" method="post">
+                            {% csrf_token %}
+                            <h1 class="coneth-headers main-desc">Coneth Infonet Device</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -282,8 +293,11 @@
             <div class="div-coneth-list">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h1 class="coneth-headers main-desc">Coneth Down</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
+                        <form action="{% url 'down' %}" method="post">
+                            {% csrf_token %}
+                            <h1 class="coneth-headers main-desc">Coneth Down</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </form>
                     </div>
                     <div class="col-sm-6">
                     </div>
@@ -298,8 +312,11 @@
                     <div class="col-sm-6">
                     </div>
                     <div class="col-sm-6">
-                        <h1 class="coneth-headers main-desc">Coneth Up</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
+                        <form action="{% url 'up' %}" method="post">
+                            {% csrf_token %}
+                            <h1 class="coneth-headers main-desc">Coneth Up</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -309,9 +326,12 @@
             <div class="div-coneth-list">
                 <div class="row">
                     <div class="col-sm-6" id="speed-div">
-                        <!-- <img src="{% static 'img/speed_img.svg' %}" alt=""> -->
-                        <h1 class="coneth-headers main-desc">Coneth Speed</h1>
-                        <button type="button" class="btn btn-success button-go">Go</button>
+                        <form action="{% url 'speed' %}" method="post">
+                            {% csrf_token %}
+                            <!-- <img src="{% static 'img/speed_img.svg' %}" alt=""> -->
+                            <h1 class="coneth-headers main-desc">Coneth Speed</h1>
+                            <button type="submit" class="btn btn-success button-go">Go</button>
+                        </form>
                     </div>
                     <div class="col-sm-6">
                     </div>
@@ -321,11 +341,52 @@
 
             <br><br><br><br><br><br>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
-    $('.spinner-grow').show();
+    $(document).ready( function(){
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("mainNav").style.top = "0";
+            } else {
+                document.getElementById("mainNav").style.top = "-74px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+        $("a").on('click', function(event) {
+            console.log("clicked");
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+            //   console.log('hash', this.hash);
+        
+            // Store hash
+            var hash = this.hash;
+            console.log(hash, "hash")
+        
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            console.log($(hash).offset())
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 300, function(){
+        
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+
+            } // End if
+        });
+    });
 </script>
 </body>
 </html>

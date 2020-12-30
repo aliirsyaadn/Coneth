@@ -1,10 +1,42 @@
-Joystick
+Mouse interface
+Joystick interface
+Joystick/Gamepads
+Micer
+Miscellanious device
+User level driver support
+Parallel printer support
+Virtio console
+HDMI CEC Driver
 Touchscreen
 GPIO
 Tablets
 Gameport support
+Graphic support
 Multimedia support
 Sound card support
+Virtualization
+GPIO support
+Multiple devices driver support (RAID and LVM)
+Macintosh device drivers
+Virtio drivers
+VHOST drivers
+Staging drivers
+Android drivers
+Reiserfs support
+JFS 
+XFS 
+BTRFS 
+NILFS2
+GFS2
+OCFS2
+zonefs
+Amateur radio support
+can bus subsystem support
+bluetooth subsystem subsystem
+WIMAX wireless broadband support
+RF switch subsystem support
+plan 9 resource sharing support
+NFC subsystem support
 
 atau menggunakan
 make localmodconfig
