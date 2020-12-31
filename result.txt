@@ -1,0 +1,10 @@
+
+   Speedtest by Ookla
+
+     Server: PT. Cyber Network Indonesia - Jakarta (id = 27861)
+        ISP: MyRepublic ID
+    Latency:     5.07 ms   (1.04 ms jitter)
+   Download:    28.67 Mbps (data used: 51.4 MB)                               
+     Upload:    14.28 Mbps (data used: 14.7 MB)                               
+Packet Loss:     0.0%
+ Result URL: https://www.speedtest.net/result/c/dd9de434-4002-4cdf-bf47-21fa093a4df8

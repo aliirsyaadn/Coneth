@@ -17,13 +17,9 @@ def rename(request):
         current_name = request.POST['current-name']
         new_name = request.POST['new-name']
 
-
-
         # withopen('result.txt', 'w') as file:
 
-
-        # os.system('./coneth.sh rename {current_name} {new_name}')
-
+        # os.system('echo "password" | sudo -S ./coneth.sh rename {current_name} {new_name}')
 
     return render(request, 'index.html', {"hopTo": "rename", "result_rename": new_name},)
 
@@ -54,8 +50,9 @@ def set_device(request):
     speed = request.POST['speed']
     duplex = request.POST['duplex']
     auto_neg = request.POST['autoneg']
-    os.system(f'./coneth.sh set {device} {speed} {duplex} {autoneg}')
-    result = f"Device {device} was succesful to be set with speed of {speed} MB/s, {duplex} duplex, auto negotiation {autoneg}"
+    os.system(
+        f'echo "password" | sudo -S ./coneth.sh set {device} {speed} {duplex} {auto_neg}')
+    result = f"Device {device} was succesful to be set with speed of {speed} MB/s, {duplex} duplex, auto negotiation {auto_neg}"
     return render(request, 'index.html', {"hopTo": "set_device", "result_set_device": result})
 
 
@@ -88,7 +85,6 @@ def info(request):
         # Cannot get wake-on-lan settings: Operation not permitted\n \
         # Link detected: yes"
 
-
     return render(request, 'index.html', {"hopTo": "info_device", "result_info": result})
 
 
@@ -100,22 +96,19 @@ def infonet(request):
         result = ""
         with open('result.txt', 'r') as file:
             result = file.read()
-        
 
-
-        
     return render(request, 'index.html', {"hopTo": "infonet_device", "result_infonet": result})
 
 
 def down(request):
     if request.method == "POST":
         device = request.POST['device']
-        os.system(f'./coneth.sh down {device} > result.txt')
+        os.system(
+            f'echo "password" | sudo -S ./coneth.sh down {device} > result.txt')
 
         result = ""
         with open('result.txt', 'r') as file:
             result = file.read()
-
 
     return render(request, 'index.html', {"hopTo": "down", "result_down": result})
 
@@ -123,7 +116,8 @@ def down(request):
 def up(request):
     if request.method == "POST":
         device = request.POST['device']
-        os.system(f'./coneth.sh up {device} > result.txt')
+        os.system(
+            f'echo "password" | sudo -S ./coneth.sh up {device} > result.txt')
 
         result = ""
         with open('result.txt', 'r') as file:
