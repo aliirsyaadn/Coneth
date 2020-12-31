@@ -31,20 +31,22 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#features">Features</a>
-            <a class="nav-item nav-link" href="#">Rename</a>
-            <a class="nav-item nav-link" href="#">Version</a>
-            <a class="nav-item nav-link" href="#">List</a>
-            <a class="nav-item nav-link" href="#">Set Device</a>
-            <a class="nav-item nav-link" href="#">Info Device</a>
-            <a class="nav-item nav-link" href="#">Infonet Device</a>
-            <a class="nav-item nav-link" href="#">Down</a>
-            <a class="nav-item nav-link" href="#">Up</a>
-            <a class="nav-item nav-link" href="#">Speed</a>
+            <a class="nav-item nav-link" id="features-click" href="#features">Features</a>
+            <a class="nav-item nav-link" id="rename-click" href="#rename">Rename</a>
+            <a class="nav-item nav-link" id="version-click" href="#version">Version</a>
+            <a class="nav-item nav-link" id="list-click" href="#list">List</a>
+            <a class="nav-item nav-link" id="set_device-click" href="#set_device">Set Device</a>
+            <a class="nav-item nav-link" id="info_device-click" href="#info_device">Info Device</a>
+            <a class="nav-item nav-link" id="infonet_device-click" href="#infonet_device">Infonet Device</a>
+            <a class="nav-item nav-link" id="down-click" href="#down">Down</a>
+            <a class="nav-item nav-link" id="up-click"id="features-click"href="#up">Up</a>
+            <a class="nav-item nav-link" id="speed-click" href="#speed">Speed</a>
 
           </div>
         </div>
       </nav>
+
+      <span id="hopTo" hidden>{{hopTo}}</span>
 
       <div class="container-fluid">
           <div class="row">
@@ -60,7 +62,7 @@
           <br><br><br>
               
 
-            <section id="feature">
+            <section id="features">
             <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -76,7 +78,7 @@
                                 <br>
                                 <h4 class="title-action">Coneth rename</h4>
                                 <p class="desc-action">Rename the device name temporary</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-rename" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                             
                             <div class="card-action color2">
@@ -84,14 +86,14 @@
                                 <br>
                                 <h4 class="title-action">Coneth version</h4>
                                 <p class="desc-action">Display current version</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-version" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                             
                             <div class="card-action color3">
                                 <img class="logo-action" src="{% static 'img/list.svg' %}" alt="">
                                 <h4 class="title-action">Coneth list</h4>
                                 <p class="desc-action">Display list all network and device driver</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-list" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                         </div>
                     </div>
@@ -105,7 +107,7 @@
                                 <br>
                                 <h4 class="title-action">Coneth Set Device</h4>
                                 <p class="desc-action">Display help information usage</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-set_device" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                             
                             <div class="card-action color5">
@@ -113,14 +115,14 @@
                                 <br>
                                 <h4 class="title-action">Coneth info device</h4>
                                 <p class="desc-action">Display settings information for the specific device network</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-info_device" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                             
                             <div class="card-action color2">
                                 <img class="logo-action" src="{% static 'img/infonet.svg' %}" alt="">
                                 <h4 class="title-action">Coneth infonet device</h4>
                                 <p class="desc-action">Display network information for the specific device network</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-infonet_device" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                         </div>
                     </div>
@@ -132,7 +134,7 @@
                                 <br>
                                 <h4 class="title-action">Coneth down device</h4>
                                 <p class="desc-action">Down or stop running for the device network</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-down" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                             
                             <div class="card-action color4">
@@ -140,14 +142,14 @@
                                 <br>
                                 <h4 class="title-action">Coneth up device</h4>
                                 <p class="desc-action">Up or start running for the device network</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-up" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                             
                             <div class="card-action color2">
                                 <img class="logo-action" src="{% static 'img/speed.svg' %}" alt="">
                                 <h4 class="title-action">Coneth speed</h4>
                                 <p class="desc-action">Display internet speed</p>
-                                <button type="button" class="btn -btn-warning button-action">Go</button>
+                                <button id="button-feature-speed" type="button" class="btn -btn-warning button-action">Go</button>
                             </div>
                         </div>
                     </div>
@@ -167,7 +169,8 @@
         </section>
             
             
-            
+        
+        <section id="rename">
 
             <div class="div-coneth-rename">
                 <div class="row">
@@ -182,17 +185,24 @@
                             <input type="text" name="new-name" class="input-rename" id="" placeholder="Enter your new device name">
                             <br><br>
                             <button type="submit" class="btn btn-success">Rename Device</button>
-                            <span id="rename-success">Rename was successful!</span>
+                            {% if result_rename %}
+                            <span id="rename-success">Rename was successful into {{result_rename}}!</span>
+                            {% endif %}
                         </form>
                     </div>
                 </div>
             </div>
 
+        </section>
+
             <br><br><br><br><br><br>
+
+        <section id="version">
 
             <div class="div-coneth-version">
                 <div class="row">
                     <div class="col-sm-6">
+                     <p>{{result_version}}</p>
                     </div>
                     <div class="col-sm-6">
                         <form action="{% url 'version' %}" method="post">
@@ -204,7 +214,11 @@
                 </div>
             </div>
 
-            <br><br><br><br><br><br>
+        </section>
+
+        <br><br><br><br><br><br>
+
+        <section id="list">
 
             <div class="div-coneth-list">
                 <div class="row">
@@ -216,11 +230,16 @@
                         </form>
                     </div>
                     <div class="col-sm-6">
+                        <p>{{result_list}}</p>
                     </div>
                 </div>
             </div>
+        
+        </section>
 
             <br><br><br><br><br><br>
+
+        <section id="set_device">
 
             <div class="div-coneth-version">
                 <div class="row">
@@ -250,12 +269,18 @@
                         <div class="col-sm-6">
                             <h1 class="coneth-headers main-desc">Coneth Set Device</h1>
                             <button type="submit" class="btn btn-success button-go">Go</button>
+                            {% if result_set_device %}
+                                <span id="rename-success">Rename was successful into {{result_rename}}!</span>
+                            {% endif %}
                         </div>
                 </div>
             </div>
 
+        </section>
+
             <br><br><br><br><br><br>
 
+        <section id="info_device">
 
             <div class="div-coneth-list">
                 <div class="row">
@@ -263,32 +288,45 @@
                         <form action="{% url 'info' %}" method="post">
                             {% csrf_token %}
                             <h1 class="coneth-headers main-desc">Coneth Info Device</h1>
+                            <input type="text" name="device" class="input-rename input-left" placeholder="Enter your device name">
+                            <br>
                             <button type="submit" class="btn btn-success button-go">Go</button>
                         </form>
                     </div>
                     <div class="col-sm-6">
+                        <p>{{result_info}}</p>
                     </div>
                 </div>
             </div>
-            
 
+        </section>
+            
             <br><br><br><br><br><br>
+
+        <section id="infonet_device">
 
             <div class="div-coneth-version">
                 <div class="row">
                     <div class="col-sm-6">
+                        <p>{{result_infonet}}</p>
                     </div>
                     <div class="col-sm-6">
                         <form action="{% url 'infonet' %}" method="post">
                             {% csrf_token %}
                             <h1 class="coneth-headers main-desc">Coneth Infonet Device</h1>
+                            <input type="text" name="device" class="input-rename input-left" id="" placeholder="Enter your device name">
+                            <br>
                             <button type="submit" class="btn btn-success button-go">Go</button>
                         </form>
                     </div>
                 </div>
             </div>
 
+        </section>
+
             <br><br><br><br><br><br>
+
+        <section id="down">
 
             <div class="div-coneth-list">
                 <div class="row">
@@ -296,32 +334,45 @@
                         <form action="{% url 'down' %}" method="post">
                             {% csrf_token %}
                             <h1 class="coneth-headers main-desc">Coneth Down</h1>
+                            <input type="text" name="device" class="input-rename input-left" placeholder="Enter your device name">
+                            <br>
                             <button type="submit" class="btn btn-success button-go">Go</button>
                         </form>
                     </div>
                     <div class="col-sm-6">
+                        <p>{{down}}</p>
                     </div>
                 </div>
             </div>
-            
 
+        </section>
+            
             <br><br><br><br><br><br>
+
+        <section id="up">
 
             <div class="div-coneth-version">
                 <div class="row">
                     <div class="col-sm-6">
+                        <p>{{result_up}}</p>
                     </div>
                     <div class="col-sm-6">
                         <form action="{% url 'up' %}" method="post">
                             {% csrf_token %}
                             <h1 class="coneth-headers main-desc">Coneth Up</h1>
+                            <input type="text" name="device" class="input-rename input-left" id="" placeholder="Enter your device name">
+                            <br>
                             <button type="submit" class="btn btn-success button-go">Go</button>
                         </form>
                     </div>
                 </div>
             </div>
 
+        </section>
+
             <br><br><br><br><br><br>
+
+        <section id="speed">
 
             <div class="div-coneth-list">
                 <div class="row">
@@ -334,59 +385,104 @@
                         </form>
                     </div>
                     <div class="col-sm-6">
+                        <p>{{result_speed}}</p>
                     </div>
                 </div>
             </div>
+
+        </section>
             
 
             <br><br><br><br><br><br>
 
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+{% comment %} <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> {% endcomment %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script>
-    $(document).ready( function(){
-        var prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
-            var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById("mainNav").style.top = "0";
-            } else {
-                document.getElementById("mainNav").style.top = "-74px";
-            }
-            prevScrollpos = currentScrollPos;
-        }
-
-        $("a").on('click', function(event) {
-            console.log("clicked");
+    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> {% endcomment %}
+    <script>
+        $(document).ready(function(){
+          // Add smooth scrolling to all links
+          $("a").on('click', function(event) {
+        
             // Make sure this.hash has a value before overriding default behavior
             if (this.hash !== "") {
-            // Prevent default anchor click behavior
-            event.preventDefault();
-            //   console.log('hash', this.hash);
+              // Prevent default anchor click behavior
+              event.preventDefault();
         
-            // Store hash
-            var hash = this.hash;
-            console.log(hash, "hash")
+              // Store hash
+              var hash = this.hash;
+              console.log(hash, "hazh")
         
-            // Using jQuery's animate() method to add smooth page scroll
-            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-            console.log($(hash).offset())
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 300, function(){
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top - 50
+              }, 800, function(){
         
                 // Add hash (#) to URL when done scrolling (default click behavior)
                 window.location.hash = hash;
-            });
-
+              });
             } // End if
+          });
+
+          console.log("yey")
+
+          let hop = "#" + $("#hopTo").text() + "-click"
+          $(hop).click()
+          console.log(hop)
+
+
+          $("#button-feature-rename").on("click", function(event) {
+              event.preventDefault()
+              $("#rename-click").click()
+          })
+
+          $("#button-feature-version").on("click", function(event) {
+              event.preventDefault()
+              $("#version-click").click()
+          })
+
+          $("#button-feature-list").on("click", function(event) {
+              event.preventDefault()
+              $("#list-click").click()
+          })
+
+          $("#button-feature-set_device").on("click", function(event) {
+              event.preventDefault()
+              $("#set_device-click").click()
+          })
+
+          $("#button-feature-info_device").on("click", function(event) {
+              event.preventDefault()
+              $("#info_device-click").click()
+          })
+
+          $("#button-feature-infonet_device").on("click", function(event) {
+              event.preventDefault()
+              $("#infonet_device-click").click()
+          })
+
+          $("#button-feature-down").on("click", function(event) {
+              event.preventDefault()
+              $("#down-click").click()
+          })
+
+          $("#button-feature-up").on("click", function(event) {
+              event.preventDefault()
+              $("#up-click").click()
+          })
+
+          $("#button-feature-speed").on("click", function(event) {
+              event.preventDefault()
+              $("#speed-click").click()
+          })
+          
+          
         });
-    });
-</script>
+        </script>
 </body>
 </html>
