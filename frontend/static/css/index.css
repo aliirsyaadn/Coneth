@@ -159,6 +159,13 @@ body {
   font-weight: 600;
 }
 
+#rename-gagal {
+  display: block;
+  text-align: center;
+  color: red;
+  font-weight: 600;
+}
+
 /* CONETH LIST */
 
 .button-go {

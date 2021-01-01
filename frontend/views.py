@@ -6,7 +6,16 @@ import os
 
 
 def index(request):
-    return render(request, 'index.html')
+
+    os.system('./netdev > device.txt')
+    with open('device.txt', 'r') as file:
+        device_name = file.readlines()
+
+    device_name_stripped = []
+    for name in device_name:
+        device_name_stripped.append(name.strip())
+
+    return render(request, 'index.html', {'device_name': device_name_stripped})
 
 
 def rename(request):
@@ -109,6 +118,10 @@ def down(request):
         result = ""
         with open('result.txt', 'r') as file:
             result = file.read()
+        
+        if len(result) < 3:
+            result = "berhasil"
+
 
     return render(request, 'index.html', {"hopTo": "down", "result_down": result})
 
@@ -122,6 +135,10 @@ def up(request):
         result = ""
         with open('result.txt', 'r') as file:
             result = file.read()
+
+        if len(result) < 3:
+            result = "berhasil"
+        
     return render(request, 'index.html', {"hopTo": "up", "result_up": result})
 
 
