@@ -60,7 +60,9 @@ elif [ $command == "down" ]; then
 elif [ $command == "up" ]; then
 	ifconfig $device up;
 elif [ $command == "rename" ]; then
-	ip link set $device name $duplex;
+	ifconfig $device down;
+	ip link set $device name $speed;
+	ifconfig $speed up;
 elif [ $command == "speed" ]; then
 	speedtest;
 else

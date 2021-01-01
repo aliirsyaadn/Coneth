@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 import os
 
@@ -26,6 +26,9 @@ def rename(request):
         current_name = request.POST['current-name']
         new_name = request.POST['new-name']
 
+        os.system(
+            f'echo "password" | sudo -S ./coneth.sh rename {current_name} {new_name}')
+
         os.system('./netdev.sh > device.txt')
         with open('device.txt', 'r') as file:
             device_name = file.readlines()
@@ -34,11 +37,8 @@ def rename(request):
         for name in device_name:
             device_name_stripped.append(name.strip())
 
-        # withopen('result.txt', 'w') as file:
-
-        # os.system('echo "password" | sudo -S ./coneth.sh rename {current_name} {new_name}')
-
-    return render(request, 'index.html', {"hopTo": "rename", "result_rename": new_name, 'device_name': device_name_stripped},)
+        return render(request, 'index.html', {"hopTo": "rename", "result_rename": new_name, 'device_name': device_name_stripped},)
+    return redirect('index')
 
 
 def version(request):
@@ -57,7 +57,8 @@ def version(request):
         for name in device_name:
             device_name_stripped.append(name.strip())
 
-    return render(request, 'index.html', {"hopTo": "version", "result_version": result, 'device_name': device_name_stripped})
+        return render(request, 'index.html', {"hopTo": "version", "result_version": result, 'device_name': device_name_stripped})
+    return redirect('index')
 
 
 def list_device(request):
@@ -76,27 +77,30 @@ def list_device(request):
         for name in device_name:
             device_name_stripped.append(name.strip())
 
-    return render(request, 'index.html', {"hopTo": "list", "result_list": result, 'device_name': device_name_stripped})
+        return render(request, 'index.html', {"hopTo": "list", "result_list": result, 'device_name': device_name_stripped})
+    return redirect('index')
 
 
 def set_device(request):
-    device = request.POST['device']
-    speed = request.POST['speed']
-    duplex = request.POST['duplex']
-    auto_neg = request.POST['autoneg']
-    os.system(
-        f'echo "password" | sudo -S ./coneth.sh set {device} {speed} {duplex} {auto_neg}')
-    result = f"Device {device} was succesful to be set with speed of {speed} MB/s, {duplex} duplex, auto negotiation {auto_neg}"
+    if request.method == "POST":
+        device = request.POST['device']
+        speed = request.POST['speed']
+        duplex = request.POST['duplex']
+        auto_neg = request.POST['autoneg']
+        os.system(
+            f'echo "password" | sudo -S ./coneth.sh set {device} {speed} {duplex} {auto_neg}')
+        result = f"Device {device} was succesful to be set with speed of {speed} MB/s, {duplex} duplex, auto negotiation {auto_neg}"
 
-    os.system('./netdev.sh > device.txt')
-    with open('device.txt', 'r') as file:
-        device_name = file.readlines()
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
 
-    device_name_stripped = []
-    for name in device_name:
-        device_name_stripped.append(name.strip())
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
 
-    return render(request, 'index.html', {"hopTo": "set_device", "result_set_device": result, 'device_name': device_name_stripped})
+        return render(request, 'index.html', {"hopTo": "set_device", "result_set_device": result, 'device_name': device_name_stripped})
+    return redirect('index')
 
 
 def info(request):
@@ -109,24 +113,6 @@ def info(request):
         with open('result.txt', 'r') as file:
             result = file.read()
 
-        # result = "Settings for enp0s3:\n \
-        # Supported ports: [ ]\n \
-        # Supported link modes:   Not reported\n \
-        # Supported pause frame use: No\n \
-        # Supports auto-negotiation: No\n \
-        # Supported FEC modes: Not reported\n \
-        # Advertised link modes:  Not reported\n \
-        # Advertised pause frame use: No\n \
-        # Advertised auto-negotiation: No\n \
-        # Advertised FEC modes: Not reported\n \
-        # Speed: Unknown!\n \
-        # Duplex: Unknown! (255)\n \
-        # Port: Other\n \
-        # PHYAD: 0\n \
-        # Transceiver: internal\n \
-        # Auto-negotiation: off\n \
-        # Cannot get wake-on-lan settings: Operation not permitted\n \
-        # Link detected: yes"
         os.system('./netdev.sh > device.txt')
         with open('device.txt', 'r') as file:
             device_name = file.readlines()
@@ -135,7 +121,8 @@ def info(request):
         for name in device_name:
             device_name_stripped.append(name.strip())
 
-    return render(request, 'index.html', {"hopTo": "info_device", "result_info": result, 'device_name': device_name_stripped})
+        return render(request, 'index.html', {"hopTo": "info_device", "result_info": result, 'device_name': device_name_stripped})
+    return redirect('index')
 
 
 def infonet(request):
@@ -155,7 +142,8 @@ def infonet(request):
         for name in device_name:
             device_name_stripped.append(name.strip())
 
-    return render(request, 'index.html', {"hopTo": "infonet_device", "result_infonet": result, 'device_name': device_name_stripped})
+        return render(request, 'index.html', {"hopTo": "infonet_device", "result_infonet": result, 'device_name': device_name_stripped})
+    return redirect('index')
 
 
 def down(request):
@@ -167,7 +155,7 @@ def down(request):
         result = ""
         with open('result.txt', 'r') as file:
             result = file.read()
-        
+
         if len(result) < 3:
             result = "berhasil"
 
@@ -179,8 +167,8 @@ def down(request):
         for name in device_name:
             device_name_stripped.append(name.strip())
 
-
-    return render(request, 'index.html', {"hopTo": "down", "result_down": result, 'device_name': device_name_stripped})
+        return render(request, 'index.html', {"hopTo": "down", "result_down": result, 'device_name': device_name_stripped})
+    return redirect('index')
 
 
 def up(request):
@@ -203,8 +191,9 @@ def up(request):
         device_name_stripped = []
         for name in device_name:
             device_name_stripped.append(name.strip())
-        
-    return render(request, 'index.html', {"hopTo": "up", "result_up": result, 'device_name': device_name_stripped})
+
+        return render(request, 'index.html', {"hopTo": "up", "result_up": result, 'device_name': device_name_stripped})
+    return redirect('index')
 
 
 def speed(request):
@@ -221,4 +210,5 @@ def speed(request):
         device_name_stripped = []
         for name in device_name:
             device_name_stripped.append(name.strip())
-    return render(request, 'index.html', {"hopTo": "speed", "result_speed": result, 'device_name': device_name_stripped})
+        return render(request, 'index.html', {"hopTo": "speed", "result_speed": result, 'device_name': device_name_stripped})
+    return redirect('index')

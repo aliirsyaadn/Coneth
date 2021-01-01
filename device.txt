@@ -1,0 +1,3 @@
+eth0
+lo
+wlp1s0

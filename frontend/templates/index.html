@@ -176,19 +176,25 @@
                 <div class="row">
                     <div class="col-sm-6">
                       <h1 class="coneth-headers main-desc">Coneth Rename</h1>
+                      <form action="{% url 'rename' %}" method="post">
+                        {% csrf_token %}
+                        <select class="form-control select-set-device" name="current-name" id="">
+                            <option value="" disabled selected>Device Name</option>
+                            {% for name in device_name %}
+                            <option value="{{name}}">{{name}}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+                        <input type="text" name="new-name" class="form-control input-rename select-set-device" id="" placeholder="Enter your new device name">
+                        <br><br>
+                        <button type="submit" class="btn btn-success button-go">Rename Device</button>
+                        
+                    </form>
                     </div>
                     <div class="col-sm-6">
-                        <form action="{% url 'rename' %}" method="post">
-                            {% csrf_token %}
-                            <input type="text" name="current-name" class="input-rename" id="" placeholder="Enter your current device name">
-                            <br><br>
-                            <input type="text" name="new-name" class="input-rename" id="" placeholder="Enter your new device name">
-                            <br><br>
-                            <button type="submit" class="btn btn-success">Rename Device</button>
-                            {% if result_rename %}
-                            <span id="rename-success">Rename was successful into {{result_rename}}!</span>
-                            {% endif %}
-                        </form>
+                        {% if result_rename %}
+                        <span id="rename-success">Rename was successful into {{result_rename}}!</span>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -244,6 +250,14 @@
             <div class="div-coneth-version">
                 <div class="row">
                     <div class="col-sm-6">
+                        {% if result_set_device %}
+                                <span id="rename-success">{{result_set_device}}</span>
+                        {% endif %}
+                       
+                        
+                    </div>
+                    <div class="col-sm-6">
+                        <h1 class="coneth-headers main-desc">Coneth Set Device</h1>
                         <form action="{% url 'set_device' %}" method="post">
                             {% csrf_token %}
 
@@ -253,6 +267,7 @@
                                 <option value="{{name}}">{{name}}</option>
                                 {% endfor %}
                             </select>
+                            <br>
 
                             <select class="form-control select-set-device" name="speed" id="">
                                 <option value="" disabled selected>Speed</option>
@@ -272,18 +287,11 @@
                                 <option value="on">On</option>
                                 <option value="off">Off</option>
                             </select>
-                        </form>
-                        </div>
-                        <div class="col-sm-6">
-                            <h1 class="coneth-headers main-desc">Coneth Set Device</h1>
                             <button type="submit" class="btn btn-success button-go">Go</button>
                             
-                            {% if result_set_device %}
-                                <span id="rename-success">{{result_set_device}}</span>
-                            {% endif %}
-
-
-                        </div>
+                            
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -361,7 +369,6 @@
                                 <option value="{{name}}">{{name}}</option>
                                 {% endfor %}
                             </select>
-                            <!-- <input type="text" name="device" class="input-rename input-left" placeholder="Enter your device name"> -->
                             <br>
                             <button type="submit" class="btn btn-success button-go">Go</button>
                             {% if result_down == "berhasil" %}
