@@ -7,7 +7,7 @@ import os
 
 def index(request):
 
-    os.system('./netdev > device.txt')
+    os.system('./netdev.sh > device.txt')
     with open('device.txt', 'r') as file:
         device_name = file.readlines()
 
@@ -26,11 +26,19 @@ def rename(request):
         current_name = request.POST['current-name']
         new_name = request.POST['new-name']
 
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
+
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
+
         # withopen('result.txt', 'w') as file:
 
         # os.system('echo "password" | sudo -S ./coneth.sh rename {current_name} {new_name}')
 
-    return render(request, 'index.html', {"hopTo": "rename", "result_rename": new_name},)
+    return render(request, 'index.html', {"hopTo": "rename", "result_rename": new_name, 'device_name': device_name_stripped},)
 
 
 def version(request):
@@ -41,7 +49,15 @@ def version(request):
         with open('result.txt', 'r') as file:
             result = file.read()
 
-    return render(request, 'index.html', {"hopTo": "version", "result_version": result})
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
+
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
+
+    return render(request, 'index.html', {"hopTo": "version", "result_version": result, 'device_name': device_name_stripped})
 
 
 def list_device(request):
@@ -51,7 +67,16 @@ def list_device(request):
         result = ""
         with open('result.txt', 'r') as file:
             result = file.read()
-    return render(request, 'index.html', {"hopTo": "list", "result_list": result})
+
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
+
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
+
+    return render(request, 'index.html', {"hopTo": "list", "result_list": result, 'device_name': device_name_stripped})
 
 
 def set_device(request):
@@ -62,7 +87,16 @@ def set_device(request):
     os.system(
         f'echo "password" | sudo -S ./coneth.sh set {device} {speed} {duplex} {auto_neg}')
     result = f"Device {device} was succesful to be set with speed of {speed} MB/s, {duplex} duplex, auto negotiation {auto_neg}"
-    return render(request, 'index.html', {"hopTo": "set_device", "result_set_device": result})
+
+    os.system('./netdev.sh > device.txt')
+    with open('device.txt', 'r') as file:
+        device_name = file.readlines()
+
+    device_name_stripped = []
+    for name in device_name:
+        device_name_stripped.append(name.strip())
+
+    return render(request, 'index.html', {"hopTo": "set_device", "result_set_device": result, 'device_name': device_name_stripped})
 
 
 def info(request):
@@ -93,8 +127,15 @@ def info(request):
         # Auto-negotiation: off\n \
         # Cannot get wake-on-lan settings: Operation not permitted\n \
         # Link detected: yes"
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
 
-    return render(request, 'index.html', {"hopTo": "info_device", "result_info": result})
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
+
+    return render(request, 'index.html', {"hopTo": "info_device", "result_info": result, 'device_name': device_name_stripped})
 
 
 def infonet(request):
@@ -106,7 +147,15 @@ def infonet(request):
         with open('result.txt', 'r') as file:
             result = file.read()
 
-    return render(request, 'index.html', {"hopTo": "infonet_device", "result_infonet": result})
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
+
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
+
+    return render(request, 'index.html', {"hopTo": "infonet_device", "result_infonet": result, 'device_name': device_name_stripped})
 
 
 def down(request):
@@ -122,8 +171,16 @@ def down(request):
         if len(result) < 3:
             result = "berhasil"
 
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
 
-    return render(request, 'index.html', {"hopTo": "down", "result_down": result})
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
+
+
+    return render(request, 'index.html', {"hopTo": "down", "result_down": result, 'device_name': device_name_stripped})
 
 
 def up(request):
@@ -138,8 +195,16 @@ def up(request):
 
         if len(result) < 3:
             result = "berhasil"
+
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
+
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
         
-    return render(request, 'index.html', {"hopTo": "up", "result_up": result})
+    return render(request, 'index.html', {"hopTo": "up", "result_up": result, 'device_name': device_name_stripped})
 
 
 def speed(request):
@@ -148,4 +213,12 @@ def speed(request):
         result = ""
         with open('result.txt', 'r') as file:
             result = file.read()
-    return render(request, 'index.html', {"hopTo": "speed", "result_speed": result})
+
+        os.system('./netdev.sh > device.txt')
+        with open('device.txt', 'r') as file:
+            device_name = file.readlines()
+
+        device_name_stripped = []
+        for name in device_name:
+            device_name_stripped.append(name.strip())
+    return render(request, 'index.html', {"hopTo": "speed", "result_speed": result, 'device_name': device_name_stripped})
