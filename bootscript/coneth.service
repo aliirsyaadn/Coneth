@@ -1,0 +1,11 @@
+[Unit]
+Description=Webserver for Coneth (Control Ethernet)
+
+[Service]
+User=zwitsalbaby1
+WorkingDirectory=/home/zwitsalbaby1/Documents/Coneth
+ExecStart=/home/zwitsalbaby1/.pyenv/shims/python manage.py runserver 192.168.1.20:8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

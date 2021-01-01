@@ -1,10 +1,10 @@
 
    Speedtest by Ookla
 
-     Server: BALIFIBER (PT Bali Towerindo Sentra Tbk) - Jakarta (id = 12909)
+     Server: Biznet Networks - Jakarta (id = 797)
         ISP: MyRepublic ID
-    Latency:     2.99 ms   (0.71 ms jitter)
-   Download:     9.40 Mbps (data used: 4.6 MB)                               
-     Upload:     9.51 Mbps (data used: 11.4 MB)                               
+    Latency:     3.06 ms   (0.61 ms jitter)
+   Download:    28.52 Mbps (data used: 30.2 MB)                               
+     Upload:    14.24 Mbps (data used: 15.6 MB)                               
 Packet Loss:     0.0%
- Result URL: https://www.speedtest.net/result/c/5be7f704-2916-4631-8dde-210b7bf7bee8
+ Result URL: https://www.speedtest.net/result/c/e2f08aab-6923-4469-8d54-e702f1ea3583
