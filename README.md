@@ -6,8 +6,9 @@ INSTALL DEPENDENCIES FOR APPLICATION
 
 Run the command anywhere:
 
-<code>sudo apt update</code>
-<code>sudo apt install ethtool speedtest</code>
+<code>sudo apt update</code><br>
+<code>sudo apt upgrade</code><br>
+<code>sudo apt install ethtool speedtest</code><br>
 
 Run the command on project directory: <code>pip install -r requirements.txt</code>
 
