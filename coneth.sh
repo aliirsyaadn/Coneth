@@ -50,11 +50,11 @@ elif [ $command == "list" ]; then
 elif [ $command == "set" ]; then
 	ethtool -s $device speed $speed duplex $duplex autoneg $autoneg; 
 elif [ $command == "info" ]; then
-	ethtool $device | less;
+	ethtool $device;
 elif [ $command == "infonet" ]; then
-	ifconfig $device | less;
+	ifconfig $device;
 elif [ $command == "dmesg" ]; then
-	dmesg | grep $device | less;
+	dmesg | grep $device;
 elif [ $command == "down" ]; then
 	ifconfig $device down;
 elif [ $command == "up" ]; then
